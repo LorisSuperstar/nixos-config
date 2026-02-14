@@ -1,0 +1,37 @@
+{ config, pkgs, ... }:
+
+{
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    package = pkgs.kdePackages.sddm;
+    theme = "sddm-astronaut-theme";
+    extraPackages = with pkgs.kdePackages; [ 
+      qt5compat 
+      qtdeclarative 
+      qtsvg 
+      qtmultimedia 
+    ];
+    settings = {
+      General.InputMethod = "";
+      Theme.CursorTheme = "Bibata-Modern-Ice";
+    };
+  };
+
+  # Keep this enabled so the binary and portal work, 
+  # but remove the extraConfig since it's now in home-manager.
+  programs.hyprland.enable = true;
+
+  # SDDM custom wallpaper override
+  environment.etc."sddm.conf.d/theme.conf.user".text = ''
+    [General]
+    Background=${/home/loris/Pictures/wallpaper.png}
+  '';
+
+  # Mouse quirk fix
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Roccat Kain 120 Aimo CPS Fix]
+    MatchName=ROCCAT ROCCAT Kain 120 Aimo*
+    ModelBouncingKeys=1
+  '';
+}
