@@ -59,6 +59,7 @@
   pkgs.opensnitch-ui
   dunst
   libnotify
+  swww
   ];
   programs.steam = {
   enable = true;
