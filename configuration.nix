@@ -56,6 +56,7 @@
         --set GDK_BACKEND x11
     '';
   }))
+  pkgs.opensnitch-ui
   ];
   programs.steam = {
   enable = true;

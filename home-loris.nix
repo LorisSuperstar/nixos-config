@@ -170,4 +170,5 @@
     programs.kitty.enable = true;
     programs.waybar.enable = true;
   };
+  services.opensnitch.enable = true;
 }
