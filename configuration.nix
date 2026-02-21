@@ -57,6 +57,8 @@
     '';
   }))
   pkgs.opensnitch-ui
+  dunst
+  libnotify
   ];
   programs.steam = {
   enable = true;
@@ -90,4 +92,6 @@
   programs.virt-manager.enable = true;
 
   networking.nameservers = [ "194.127.2.2" "adblock.dns.mullvad.net" ];
+  services.opensnitch.enable = true;
+  services.dbus.enable = true;
 }

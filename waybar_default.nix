@@ -14,11 +14,17 @@
         spacing = 4;
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
-        modules-right = [ "custom/processes" "custom/fuzzel" ];
+        # Added "tray" here
+        modules-right = [ "tray" "custom/processes" "custom/fuzzel" ];
 
         "hyprland/workspaces" = {
           all-outputs = true;
           format = "{name}";
+        };
+
+        "tray" = {
+          icon-size = 18;
+          spacing = 10;
         };
 
         "clock" = { 
@@ -29,7 +35,6 @@
           format = "";
           tooltip = true;
           tooltip-format = "View Running Processes";
-          # Uses absolute paths to ensure the terminal and monitor launch correctly
           on-click = "${pkgs.foot}/bin/foot -e ${pkgs.btop}/bin/btop";
         };
 
@@ -47,6 +52,7 @@
         spacing = 4;
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
+        # No tray on second monitor (usually only one tray allowed)
         modules-right = [ "custom/processes" "custom/fuzzel" ];
 
         "hyprland/workspaces" = {
@@ -62,7 +68,6 @@
           format = "";
           tooltip = true;
           tooltip-format = "System Monitor";
-          # We add '--title btop-float' so Hyprland can recognize it
           on-click = "${pkgs.foot}/bin/foot --title btop-float -e ${pkgs.btop}/bin/btop";
         };
 
@@ -87,13 +92,17 @@
           color: #cdd6f4;
       }
 
-      /* Styling for the modules including the new processes button */
-      #workspaces, #clock, #custom-fuzzel, #custom-processes {
+      #workspaces, #clock, #custom-fuzzel, #custom-processes, #tray {
           background: #1e1e2e;
           padding: 0px 10px;
           margin: 4px 4px;
           border-radius: 10px;
           border: 1px solid #313244;
+      }
+
+      #tray {
+          padding-right: 8px;
+          padding-left: 8px;
       }
 
       #workspaces button {
@@ -109,17 +118,8 @@
           border-bottom: 3px solid #f5c2e7;
       }
 
-      #workspaces button.urgent {
-          background-color: #f38ba8;
-      }
-
-      #custom-processes {
-          color: #89b4fa; /* Soft blue color for the process icon */
-      }
-
-      #custom-fuzzel {
-          color: #f5c2e7; /* Pinkish color for the search icon */
-      }
+      #custom-processes { color: #89b4fa; }
+      #custom-fuzzel { color: #f5c2e7; }
     '';
   };
 }
