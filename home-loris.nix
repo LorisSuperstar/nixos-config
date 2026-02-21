@@ -32,7 +32,6 @@
       vscodium 
       thunderbird 
       fuzzel
-      swww
       unzip
       zip
       qemu
@@ -69,11 +68,8 @@
         ];
 
         "exec-once" = [
+          "opensnitch-ui --background"
           "waybar"
-          "swww-daemon"
-          # This sets the wallpaper on launch with a crop resize to help with the 21:9 aspect ratio
-          "sleep 1 && swww img /home/loris/Pictures/wallpaper.png --outputs DP-1 --resize crop"
-          "sleep 1 && swww img /home/loris/Pictures/wallpaper.png --outputs HDMI-A-2 --resize crop"
         ];
 
         env = [

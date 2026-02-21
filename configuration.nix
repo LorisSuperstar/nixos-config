@@ -48,7 +48,7 @@
   # System Software
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    git vim steam-run hyprpaper sddm-astronaut bibata-cursors protontricks lutris bottles wineWowPackages.stagingFull winetricks pkgs.bottles
+    git vim steam-run hyprpaper sddm-astronaut bibata-cursors protontricks wineWowPackages.stagingFull
     (virt-manager.overrideAttrs (oldAttrs: {
     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ makeWrapper ];
     postInstall = ''
