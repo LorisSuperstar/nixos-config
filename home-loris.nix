@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+
+  # Inside your main configuration.nix
+  services.ollama = {
+  enable = true;
+  acceleration = "rocm";
+};
+
   home-manager.users.loris = { pkgs, ... }: {
     imports = [ ./waybar_default.nix ];
     home.stateVersion = "25.11";
@@ -25,8 +32,7 @@
       vscodium 
       thunderbird 
       fuzzel
-      swww # Added for wallpaper management
-      krita
+      swww
       unzip
       zip
       qemu
@@ -35,16 +41,19 @@
       gcc
       libiconv
       obsidian
+      virt-viewer
+      blender
+      ollama
 
-      # VM
+
+      # 2. Corrected virt-manager override: Wrapped in parentheses to evaluate as one item
       (virt-manager.overrideAttrs (oldAttrs: {
-        nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
+        nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
         postInstall = (oldAttrs.postInstall or "") + ''
           wrapProgram $out/bin/virt-manager \
             --set GDK_BACKEND x11
         '';
       }))
-      virt-viewer
     ];
 
 
