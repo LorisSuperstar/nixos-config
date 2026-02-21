@@ -70,6 +70,9 @@
         "exec-once" = [
           "opensnitch-ui --background"
           "waybar"
+          "swww-daemon"
+          "sleep 1 && swww img /home/loris/Pictures/wallpaper.png --outputs DP-1 --resize crop"
+          "sleep 1 && swww img /home/loris/Pictures/wallpaper.png --outputs HDMI-A-2 --resize crop"
         ];
 
         env = [
@@ -110,14 +113,9 @@
         
         bind = [
           "$mainMod, Q, exec, kitty"
-          "$mainMod, E, exec, dolphin"
-          "$mainMod, R, exec, wofi --show drun"
           "$mainMod, D, exec, fuzzel"
           "$mainMod, C, killactive"
-          "$mainMod, M, exit"
-          "$mainMod, V, togglefloating"
           "$mainMod, F, fullscreen, 0"
-          "$mainMod SHIFT, F, fullscreen, 1"
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
           "$mainMod, up, movefocus, u"
