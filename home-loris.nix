@@ -44,6 +44,7 @@
       virt-viewer
       blender
       ollama
+      bitwarden-desktop
 
 
       # 2. Corrected virt-manager override: Wrapped in parentheses to evaluate as one item

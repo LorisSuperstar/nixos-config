@@ -87,4 +87,6 @@
   };
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+
+  networking.nameservers = [ "194.127.2.2" "adblock.dns.mullvad.net" ];
 }
