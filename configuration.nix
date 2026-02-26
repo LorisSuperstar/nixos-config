@@ -60,6 +60,7 @@
   dunst
   libnotify
   swww
+  flameshot
   ];
   programs.steam = {
   enable = true;
