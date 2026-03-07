@@ -61,6 +61,7 @@
   libnotify
   swww
   flameshot
+  fastfetch
   ];
   programs.steam = {
   enable = true;
