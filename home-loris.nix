@@ -44,7 +44,7 @@
       blender
       ollama
       bitwarden-desktop
-
+      qbittorrent
 
       # 2. Corrected virt-manager override: Wrapped in parentheses to evaluate as one item
       (virt-manager.overrideAttrs (oldAttrs: {
@@ -71,8 +71,8 @@
           "opensnitch-ui --background"
           "waybar"
           "swww-daemon"
-          "sleep 1 && swww img /home/loris/Pictures/wallpaper.png --outputs DP-1 --resize crop"
-          "sleep 1 && swww img /home/loris/Pictures/wallpaper.png --outputs HDMI-A-2 --resize crop"
+          "swww img /home/loris/Pictures/wallpaper.png"
+          "kitty --hold -e fastfetch"
         ];
 
         env = [
