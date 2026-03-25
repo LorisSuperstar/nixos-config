@@ -42,13 +42,13 @@
   users.users.loris = {
     isNormalUser = true;
     # All groups must be in this one list
-    extraGroups = [ "wheel" "networkmanager" "video" "libvirtd" "libvirtd"];
+    extraGroups = [ "wheel" "networkmanager" "video" "libvirtd"];
   };
 
   # System Software
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    git vim steam-run hyprpaper sddm-astronaut bibata-cursors protontricks wineWowPackages.stagingFull
+    gamescope mangohud git vim steam-run hyprpaper sddm-astronaut bibata-cursors protontricks wineWowPackages.stagingFull
     (virt-manager.overrideAttrs (oldAttrs: {
     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ makeWrapper ];
     postInstall = ''
@@ -64,10 +64,11 @@
   fastfetch
   ];
   programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true; # Optional
-  dedicatedServer.openFirewall = true; # Optional
-};
+    enable = true;
+    remotePlay.openFirewall = true; # Optional
+    dedicatedServer.openFirewall = true; # Optional
+    gamescopeSession.enable = true; # Adds Gamescope integration
+  };
   programs.gamemode.enable = true;
 
   # Fonts & Maintenance

@@ -61,6 +61,19 @@
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
+
+        render = {
+        direct_scanout = false; 
+       };
+
+      misc = {
+        vfr = false;
+        vrr = 0; # Set to 0 (off) for now to see if it fixes the 0.5 FPS
+        force_default_wallpaper = 0;
+        disable_hyprland_logo = true;
+        initial_workspace_tracking = 0; # Prevents focus-stealing bugs
+      };
+
         # MONITOR SETUP: Scale is set to 1 to prevent the "zoomed" UI look
         monitor = [
           "DP-1, 3440x1440@120, 0x0, 1"
@@ -76,6 +89,9 @@
         ];
 
         env = [
+          "XCURSOR_SIZE,24"
+          "HYPRCURSOR_SIZE,24"
+          "WLR_DRM_NO_ATOMIC,1"
           "XCURSOR_SIZE,24"
           "HYPRCURSOR_SIZE,24"
         ];
@@ -102,11 +118,6 @@
           inactive_opacity = 0.95;
           shadow.enabled = true;
           blur.enabled = true;
-        };
-
-        misc = {
-          force_default_wallpaper = 0;
-          disable_hyprland_logo = true;
         };
 
         "$mainMod" = "SUPER";
