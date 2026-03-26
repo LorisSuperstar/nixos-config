@@ -107,13 +107,12 @@
           gaps_in = 5;
           gaps_out = 0;
           border_size = 2;
-          "col.active_border" = "rgba(cba6f7ee) rgba(94e2d5ee) 45deg"; # Lilac to Teal
-          "col.inactive_border" = "rgba(313244aa)";
+          "col.active_border" = "rgba(6e43a6ee)";
+          "col.inactive_border" = "rgba(1e1a29aa)";
           layout = "dwindle";
         };
 
         decoration = {
-          rounding = 10;
           active_opacity = 1.0;
           inactive_opacity = 0.95;
           shadow.enabled = true;

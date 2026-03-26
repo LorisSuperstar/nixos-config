@@ -88,38 +88,56 @@
       }
 
       window#waybar {
-          background: rgba(21, 18, 27, 0); 
+          background: transparent; /* Makes the bar float naturally */
           color: #cdd6f4;
       }
 
+      /* Each module "pill" */
       #workspaces, #clock, #custom-fuzzel, #custom-processes, #tray {
-          background: #1e1e2e;
+          background: #1e1a29; /* Very dark midnight purple */
           padding: 0px 10px;
           margin: 4px 4px;
-          border-radius: 10px;
-          border: 1px solid #313244;
-      }
-
-      #tray {
-          padding-right: 8px;
-          padding-left: 8px;
+          border-radius: 8px;
+          border: 1px solid #312b45; /* Subtle dark purple border */
       }
 
       #workspaces button {
           padding: 0 5px;
           background: transparent;
-          color: #cdd6f4;
-          border-bottom: 3px solid transparent;
+          color: #a5adcb;
+          border-bottom: 2px solid transparent;
+          transition: all 0.3s ease;
       }
 
-      #workspaces button.active {
-          background: #45475a;
-          color: #f5c2e7;
-          border-bottom: 3px solid #f5c2e7;
+      /* The Active Workspace - Matching your border color! */
+      #workspaces button.focused, #workspaces button.active {
+          background: #3c2a52; /* Muted deep purple */
+          color: #cba6f7;      /* Bright purple text */
+          border-bottom: 2px solid #6e43a6; /* Your static purple border color */
       }
 
-      #custom-processes { color: #89b4fa; }
-      #custom-fuzzel { color: #f5c2e7; }
+      #workspaces button:hover {
+          background: #2a2438;
+          color: #cba6f7;
+      }
+
+      /* Module Specific Colors */
+      #clock {
+          color: #cba6f7;
+          font-weight: bold;
+      }
+
+      #custom-processes { 
+          color: #6e43a6; 
+      }
+
+      #custom-fuzzel { 
+          color: #6e43a6; /* Your main purple color */
+      }
+
+      #tray {
+          padding: 0 10px;
+      }
     '';
   };
 }
