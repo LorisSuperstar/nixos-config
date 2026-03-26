@@ -70,13 +70,16 @@
           "WLR_DRM_NO_ATOMIC,1"
         ];
 
-        # Add this to your exec-once to force the cursor to change on login
         "exec-once" = [
+          # Set the cursor immediately
           "hyprctl setcursor catppuccin-mocha-mauve-cursors 32"
+          
+          # Start the wallpaper daemon AND set the image
+          # The '&&' ensures the daemon is ready before trying to set the image
+          "swww-daemon && swww img /home/loris/Pictures/wallpaper.png"
+          
           "opensnitch-ui --background"
           "waybar"
-          "swww-daemon"
-          "swww img /home/loris/Pictures/wallpaper.png"
           "kitty --hold -e fastfetch"
         ];
 
