@@ -48,7 +48,7 @@
   # System Software
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    gamescope mangohud git vim steam-run hyprpaper sddm-astronaut bibata-cursors protontricks wineWowPackages.stagingFull
+    gamescope mangohud git vim steam-run hyprpaper sddm-astronaut protontricks wineWowPackages.stagingFull
     (virt-manager.overrideAttrs (oldAttrs: {
     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ makeWrapper ];
     postInstall = ''

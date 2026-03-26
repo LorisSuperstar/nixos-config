@@ -14,7 +14,7 @@
     ];
     settings = {
       General.InputMethod = "";
-      Theme.CursorTheme = "Bibata-Modern-Ice";
+      Theme.CursorTheme = "Catppuccin-Mocha-Mauve-Cursors";
     };
   };
 
