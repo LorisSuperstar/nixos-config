@@ -44,6 +44,7 @@
       ollama
       bitwarden-desktop
       qbittorrent
+      jdk25_headless
 
       # 2. Corrected virt-manager override: Wrapped in parentheses to evaluate as one item
       (virt-manager.overrideAttrs (oldAttrs: {
@@ -57,18 +58,10 @@
 
 
     # Hyprland Configuration
-   wayland.windowManager.hyprland = {
+    wayland.windowManager.hyprland = {
       enable = true;
       settings = {
         
-        # Add these to your env list to tell GTK and Hyprland exactly what to do
-        env = [
-          "XCURSOR_THEME,catppuccin-mocha-mauve-cursors"
-          "XCURSOR_SIZE,32"
-          "HYPRCURSOR_THEME,catppuccin-mocha-mauve-cursors"
-          "HYPRCURSOR_SIZE,32"
-          "WLR_DRM_NO_ATOMIC,1"
-        ];
 
         "exec-once" = [
           # Set the cursor immediately
@@ -83,6 +76,23 @@
           "kitty --hold -e fastfetch"
         ];
 
+
+        # Monitor Setup
+        # monitor = name, resolution@hz, position, scale
+        monitor = [
+          "DP-1, 3440x1440@120, 0x0, 1"
+          "HDMI-A-2, 1920x1080@60, 3440x0, 1"
+        ];
+
+        # Keep your existing env and other settings below...
+        env = [
+          "XCURSOR_THEME,catppuccin-mocha-mauve-cursors"
+          "XCURSOR_SIZE,32"
+          "HYPRCURSOR_THEME,catppuccin-mocha-mauve-cursors"
+          "HYPRCURSOR_SIZE,32"
+          "WLR_DRM_NO_ATOMIC,1"
+        ];
+      
         input = {
           kb_layout = "ch";
           follow_mouse = 1;
