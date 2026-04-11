@@ -4,7 +4,7 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    package = pkgs.kdePackages.sddm;
+    # package = pkgs.kdePackages.sddm; # <--- DELETE OR COMMENT THIS LINE
     theme = "sddm-astronaut-theme";
     extraPackages = with pkgs.kdePackages; [ 
       qt5compat 
@@ -18,8 +18,6 @@
     };
   };
 
-  # Keep this enabled so the binary and portal work, 
-  # but remove the extraConfig since it's now in home-manager.
   programs.hyprland.enable = true;
 
   # SDDM custom wallpaper override
