@@ -56,6 +56,7 @@
         --set GDK_BACKEND x11
     '';
   }))
+  vlc
   pkgs.opensnitch-ui
   dunst
   libnotify
@@ -98,6 +99,9 @@
   networking.nameservers = [ "194.127.2.2" "adblock.dns.mullvad.net" ];
   services.dbus.enable = true;
 
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+
   services.opensnitch = {
   enable = true;
   rules = {
@@ -127,4 +131,12 @@
     };
   };
 };
+
+programs.java = {
+  enable = true;
+  package = pkgs.jdk25; # or your specific version
+};
+
+# Ensure you have this enabled
+security.pki.certificateFiles = [ ]; # This is usually empty by default but triggers the symlinking
 }
