@@ -69,7 +69,7 @@
           
           # Start the wallpaper daemon AND set the image
           # The '&&' ensures the daemon is ready before trying to set the image
-          "swww-daemon && swww img /home/loris/Pictures/wallpaper.png"
+          "swww-daemon && swww img ${./assets/wallpaper.png}"
           
           "waybar"
           "kitty --hold -e fastfetch"
