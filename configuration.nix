@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   imports = [
     ./hardware-configuration.nix
-    <home-manager/nixos>
     ./desktop.nix      # Pulls in SDDM/Hyprland
     ./home-loris.nix   # Pulls in your user apps/configs
   ];
