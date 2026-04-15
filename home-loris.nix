@@ -71,7 +71,6 @@
           # The '&&' ensures the daemon is ready before trying to set the image
           "swww-daemon && swww img /home/loris/Pictures/wallpaper.png"
           
-          "opensnitch-ui --background"
           "waybar"
           "kitty --hold -e fastfetch"
         ];

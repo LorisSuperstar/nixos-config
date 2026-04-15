@@ -57,7 +57,6 @@
     '';
   }))
   vlc
-  pkgs.opensnitch-ui
   dunst
   libnotify
   swww
@@ -100,36 +99,6 @@
   services.dbus.enable = true;
 
   services.desktopManager.plasma6.enable = true;
-
-  services.opensnitch = {
-  enable = true;
-  rules = {
-    systemd-timesyncd = {
-      name = "systemd-timesyncd";
-      enabled = true;
-      action = "allow";
-      duration = "always";
-      operator = {
-        type = "simple";
-        sensitive = false;
-        operand = "process.path";
-        data = "${pkgs.systemd}/lib/systemd/systemd-timesyncd";
-      };
-    };
-    systemd-resolved = {
-      name = "systemd-resolved";
-      enabled = true;
-      action = "allow";
-      duration = "always";
-      operator = {
-        type = "simple";
-        sensitive = false;
-        operand = "process.path";
-        data = "${pkgs.systemd}/lib/systemd/systemd-resolved";
-      };
-    };
-  };
-};
 
 programs.java = {
   enable = true;
