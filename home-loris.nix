@@ -73,6 +73,7 @@
           
           "waybar"
           "kitty --hold -e fastfetch"
+          "dunst"
         ];
 
 
