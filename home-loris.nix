@@ -45,6 +45,7 @@
       bitwarden-desktop
       qbittorrent
       jdk25_headless
+      brave
 
       # 2. Corrected virt-manager override: Wrapped in parentheses to evaluate as one item
       (virt-manager.overrideAttrs (oldAttrs: {
