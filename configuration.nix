@@ -9,6 +9,10 @@
     ./home-loris.nix   # Pulls in your user apps/configs
   ];
 
+systemd.user.services.kwalletd5.enable = false;
+# If using Plasma 6/Qt6 specifically:
+systemd.user.services.kwalletd6.enable = false;
+
   # Boot & Hardware
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

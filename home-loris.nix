@@ -45,7 +45,6 @@
       bitwarden-desktop
       qbittorrent
       jdk25_headless
-      brave
       csvlens
       protonvpn-gui
       wireguard-tools
