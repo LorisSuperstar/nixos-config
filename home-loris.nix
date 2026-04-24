@@ -47,6 +47,8 @@
       jdk25_headless
       brave
       csvlens
+      protonvpn-gui
+      wireguard-tools
 
       # 2. Corrected virt-manager override: Wrapped in parentheses to evaluate as one item
       (virt-manager.overrideAttrs (oldAttrs: {
@@ -57,7 +59,6 @@
         '';
       }))
     ];
-
 
     # Hyprland Configuration
     wayland.windowManager.hyprland = {

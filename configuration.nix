@@ -71,6 +71,7 @@
     gamescopeSession.enable = true; # Adds Gamescope integration
   };
   programs.gamemode.enable = true;
+  networking.firewall.checkReversePath = false;
 
   # Fonts & Maintenance
   fonts.packages = with pkgs; [
