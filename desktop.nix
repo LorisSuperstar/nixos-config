@@ -23,7 +23,7 @@
   # SDDM custom wallpaper override
   environment.etc."sddm.conf.d/theme.conf.user".text = ''
     [General]
-    Background=${/home/loris/Pictures/wallpaper.png}
+    Background=${/home/loris/nixos-config/assets/wallpaper.png}
   '';
 
   # Mouse quirk fix

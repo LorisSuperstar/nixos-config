@@ -6,8 +6,9 @@
   imports = [
     ./hardware-configuration.nix
     ./desktop.nix      # Pulls in SDDM/Hyprland
+    <home-manager/nixos>
     ./home-loris.nix   # Pulls in your user apps/configs
-  ];
+      ];
 
 systemd.user.services.kwalletd5.enable = false;
 # If using Plasma 6/Qt6 specifically:
