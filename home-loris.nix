@@ -64,15 +64,15 @@
       enable = true;
       settings = {
         
-
         "exec-once" = [
-          # Set the cursor immediately
           "hyprctl setcursor catppuccin-mocha-mauve-cursors 32"
-          
-          # Start the wallpaper daemon AND set the image
-          # The '&&' ensures the daemon is ready before trying to set the image
-          "swww-daemon && swww img ${./assets/wallpaper.png}"
-          
+
+          # Start daemon first
+          "swww-daemon"
+
+          # Give it a moment, then set wallpaper
+          "sleep 0.5 && swww img ${./assets/wallpaper.png}"
+
           "waybar"
           "kitty --hold -e fastfetch"
           "dunst"
@@ -84,7 +84,7 @@
         monitor = [
           "DP-1, 3440x1440@120, 0x0, 1"
           "HDMI-A-2, 1920x1080@60, 3440x0, 1"
-	  "Virtual-1, 1920x1080@60, 0x0, 1"
+	        "Virtual-1, 1920x1080@60, 0x0, 1"
         ];
 
         # Keep your existing env and other settings below...

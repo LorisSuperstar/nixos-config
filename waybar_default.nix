@@ -44,6 +44,42 @@
         };
       }
       {
+  # --- VM Monitor (Virtual-1) ---
+  layer = "top";
+  position = "top";
+  output = "Virtual-1";
+  height = 30;
+  spacing = 4;
+
+  modules-left = [ "hyprland/workspaces" ];
+  modules-center = [ "clock" ];
+  modules-right = [ "tray" "custom/processes" "custom/fuzzel" ];
+
+  "hyprland/workspaces" = {
+    all-outputs = true;
+    format = "{name}";
+  };
+
+  "clock" = {
+    format = "{:%H:%M}";
+  };
+
+  "tray" = {
+    icon-size = 18;
+    spacing = 10;
+  };
+
+  "custom/processes" = {
+    format = "";
+    on-click = "${pkgs.foot}/bin/foot -e ${pkgs.btop}/bin/btop";
+  };
+
+  "custom/fuzzel" = {
+    format = "";
+    on-click = "${pkgs.fuzzel}/bin/fuzzel";
+  };
+}
+      {
         # --- Monitor 2 (HDMI-A-2) ---
         layer = "top";
         position = "top";
