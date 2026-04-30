@@ -14,7 +14,6 @@
     ];
     settings = {
       General.InputMethod = "";
-      Theme.CursorTheme = "Catppuccin-Mocha-Mauve-Cursors";
     };
   };
 

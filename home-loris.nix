@@ -12,14 +12,6 @@
     imports = [ ./waybar_default.nix ];
     home.stateVersion = "25.11";
 
-    home.pointerCursor = {
-      gtk.enable = true;
-      x11.enable = true;
-      package = pkgs.catppuccin-cursors.mochaMauve;
-      name = "catppuccin-mocha-mauve-cursors"; 
-      size = 32;
-    };
-
 
     # User Packages
     home.packages = with pkgs; [
@@ -65,7 +57,6 @@
       settings = {
         
         "exec-once" = [
-          "hyprctl setcursor catppuccin-mocha-mauve-cursors 32"
 
           # Start daemon first
           "swww-daemon"
@@ -85,15 +76,6 @@
           "DP-1, 3440x1440@120, 0x0, 1"
           "HDMI-A-2, 1920x1080@60, 3440x0, 1"
 	        "Virtual-1, 1920x1080@60, 0x0, 1"
-        ];
-
-        # Keep your existing env and other settings below...
-        env = [
-          "XCURSOR_THEME,catppuccin-mocha-mauve-cursors"
-          "XCURSOR_SIZE,32"
-          "HYPRCURSOR_THEME,catppuccin-mocha-mauve-cursors"
-          "HYPRCURSOR_SIZE,32"
-          "WLR_DRM_NO_ATOMIC,1"
         ];
       
         input = {
