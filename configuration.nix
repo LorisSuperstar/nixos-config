@@ -66,8 +66,8 @@ systemd.user.services.kwalletd6.enable = false;
   dunst
   libnotify
   swww
-  flameshot
   fastfetch
+  grimblast
   ];
   programs.steam = {
     enable = true;
