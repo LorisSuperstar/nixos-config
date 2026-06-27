@@ -6,12 +6,13 @@
   imports = [
     ./hardware-configuration.nix
     ./desktop.nix      # Pulls in SDDM/Hyprland
-    <home-manager/nixos>
     ./home-loris.nix   # Pulls in your user apps/configs
       ];
 
 systemd.user.services.kwalletd5.enable = false;
 # If using Plasma 6/Qt6 specifically:
+
+services.flatpak.enable = true;
 systemd.user.services.kwalletd6.enable = false;
 
   # Boot & Hardware
@@ -102,7 +103,6 @@ systemd.user.services.kwalletd6.enable = false;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  networking.nameservers = [ "194.127.2.2" "adblock.dns.mullvad.net" ];
   services.dbus.enable = true;
 
   services.desktopManager.plasma6.enable = true;
@@ -114,4 +114,5 @@ programs.java = {
 
 # Ensure you have this enabled
 security.pki.certificateFiles = [ ]; # This is usually empty by default but triggers the symlinking
+
 }

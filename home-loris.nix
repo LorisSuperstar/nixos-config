@@ -104,6 +104,7 @@
         "$mainMod" = "SUPER";
         
         bind = [
+          "$mainMod, P, exec, grimblast copy area"
           "$mainMod, Print, exec, grimblast copy area"
           "$mainMod, Q, exec, kitty"
           "$mainMod, D, exec, fuzzel"
