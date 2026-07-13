@@ -41,6 +41,7 @@
       protonvpn-gui
       wireguard-tools
       vbam
+      ares
 
       # 2. Corrected virt-manager override: Wrapped in parentheses to evaluate as one item
       (virt-manager.overrideAttrs (oldAttrs: {
