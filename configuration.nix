@@ -4,7 +4,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   imports = [
-    ./hardware-configuration.nix
+    /home/loris/nixos-config/hardware-configuration.nix
     ./desktop.nix      # Pulls in SDDM/Hyprland
     ./home-loris.nix   # Pulls in your user apps/configs
       ];
