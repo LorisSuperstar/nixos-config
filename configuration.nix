@@ -5,15 +5,14 @@
 
   imports = [
     ./hardware-configuration.nix
-    ./desktop.nix      # Pulls in SDDM/Hyprland
-    ./home-loris.nix   # Pulls in your user apps/configs
-      ];
+    ./desktop.nix      # SDDM/Hyprland
+    ./home-loris.nix   # User apps/configs
+  ];
 
-systemd.user.services.kwalletd5.enable = false;
-# If using Plasma 6/Qt6 specifically:
-
-services.flatpak.enable = true;
-systemd.user.services.kwalletd6.enable = false;
+  # Flatpak & Desktop Services
+  services.flatpak.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  services.dbus.enable = true;
 
   # Boot & Hardware
   boot.loader.systemd-boot.enable = true;
@@ -21,22 +20,29 @@ systemd.user.services.kwalletd6.enable = false;
   boot.kernelPackages = pkgs.linuxPackages;
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];
-  hardware.graphics = { enable = true; enable32Bit = true; };
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
-  # Localization
+  # Localization & Console
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
+
   console = {
     earlySetup = true; 
     keyMap = "sg"; 
     font = "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
     packages = with pkgs; [ terminus_font ];
   };
-  services.xserver.xkb = { layout = "ch"; variant = ""; };
+  services.xserver.xkb = {
+    layout = "ch";
+    variant = "";
+  };
 
-  # Audio
+  # Audio (PipeWire)
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -45,74 +51,86 @@ systemd.user.services.kwalletd6.enable = false;
     pulse.enable = true;
   };
 
-  # Users
+  # User Accounts
   users.users.loris = {
     isNormalUser = true;
-    # All groups must be in this one list
-    extraGroups = [ "wheel" "networkmanager" "video" "libvirtd"];
+    extraGroups = [ "wheel" "networkmanager" "video" "libvirtd" ];
   };
 
-  # System Software
+  # Virtualization
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
+  # System Software & Unfree Packages
   nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = with pkgs; [
-    gamescope mangohud git vim steam-run hyprpaper sddm-astronaut protontricks wineWowPackages.stagingFull
-    (virt-manager.overrideAttrs (oldAttrs: {
-    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ makeWrapper ];
-    postInstall = ''
-      wrapProgram $out/bin/virt-manager \
-        --set GDK_BACKEND x11
-    '';
-  }))
-  vlc
-  dunst
-  libnotify
-  swww
-  fastfetch
-  grimblast
+    gpu-screen-recorder-gtk
+    losslesscut-bin
+    gamescope
+    mangohud
+    git
+    vim
+    steam-run
+    hyprpaper
+    sddm-astronaut
+    protontricks
+    wineWowPackages.stagingFull
+    zenity
+    wget
+    xdg-desktop-portal-gtk
+    vlc
+    dunst
+    libnotify
+    swww
+    fastfetch
+    grimblast
+    wowup-cf
+    nodejs_20
   ];
+
+  # Gaming & Performance
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Optional
-    dedicatedServer.openFirewall = true; # Optional
-    gamescopeSession.enable = true; # Adds Gamescope integration
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
   };
   programs.gamemode.enable = true;
   networking.firewall.checkReversePath = false;
 
-  # Fonts & Maintenance
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono nerd-fonts.fira-code
-    noto-fonts noto-fonts-color-emoji
-  ];
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-  
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  system.stateVersion = "25.11";
-
+  # File Manager
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
       thunar-archive-plugin
     ];
   };
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
 
-  services.dbus.enable = true;
+  # Java Environment
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk25;
+  };
 
-  services.desktopManager.plasma6.enable = true;
+  # Fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    noto-fonts
+    noto-fonts-color-emoji
+  ];
 
-programs.java = {
-  enable = true;
-  package = pkgs.jdk25; # or your specific version
-};
+  # Garbage Collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
-# Ensure you have this enabled
-security.pki.certificateFiles = [ ]; # This is usually empty by default but triggers the symlinking
+  # Home Manager Setup
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
+  system.stateVersion = "25.11";
 }
