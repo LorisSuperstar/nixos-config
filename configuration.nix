@@ -20,10 +20,6 @@
   boot.kernelPackages = pkgs.linuxPackages;
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
 
   # Localization & Console
   networking.hostName = "nixos";
@@ -31,25 +27,19 @@
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  console = {
-    earlySetup = true; 
-    keyMap = "sg"; 
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
-    packages = with pkgs; [ terminus_font ];
-  };
-  services.xserver.xkb = {
-    layout = "ch";
-    variant = "";
-  };
+  console.earlySetup = true; 
+  console.keyMap = "sg"; 
+  console.font = "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
+  console.packages = with pkgs; [ terminus_font ];
+
+  services.xserver.xkb.layout = "ch";
 
   # Audio (PipeWire)
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+  services.pipewire.enable = true;
+  services.pipewire.alsa.enable = true;
+  services.pipewire.alsa.support32Bit = true;
+  services.pipewire.pulse.enable = true;
 
   # User Accounts
   users.users.loris = {
@@ -69,9 +59,6 @@
     description = "LiteLLM Proxy Server";
     after = [ "network.target" "ollama.service" ];
     wantedBy = [ "multi-user.target" ];
-    
-    # Environment variables if you add other keys later
-    # environment = { OPENAI_API_KEY = "sk-..."; };
 
     serviceConfig = {
       ExecStart = "${pkgs.litellm}/bin/litellm --model ollama/llama3.2:1b --port 4000";
@@ -111,31 +98,24 @@
   ];
 
   # Gaming & Performance
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    gamescopeSession.enable = true;
-    extraCompatPackages = with pkgs; [
-      steamtinkerlaunch
-    ];
-  };
+  programs.steam.enable = true;
+  programs.steam.remotePlay.openFirewall = true;
+  programs.steam.dedicatedServer.openFirewall = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.steam.extraCompatPackages = with pkgs; [
+    steamtinkerlaunch
+  ];
+
   programs.gamemode.enable = true;
   networking.firewall.checkReversePath = false;
 
   # File Manager
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-    ];
-  };
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+  ];
 
   # Java Environment
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk25;
-  };
+  programs.java.package = pkgs.jdk25;
 
   # Fonts
   fonts.packages = with pkgs; [
@@ -146,11 +126,9 @@
   ];
 
   # Garbage Collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
+  nix.gc.automatic = true;
+  nix.gc.dates = "weekly";
+  nix.gc.options = "--delete-older-than 7d";
 
   # Home Manager Setup
   home-manager.useGlobalPkgs = true;
