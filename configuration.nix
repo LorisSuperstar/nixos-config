@@ -1,5 +1,16 @@
 { config, pkgs, ... }:
 
+let
+  friendsShell = pkgs.rustPlatform.buildRustPackage {
+    pname = "shell";
+    version = "0.1.0-alpha.5";
+    
+    src = ./assets/shell;
+
+    # Replace the placeholder with your actual hash here:
+    cargoHash = "sha256-YlNqm/oNJGdFsSfPNsLCQ1p122smA6jpllPClkhv1Lc=";
+  };
+in
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -45,7 +56,13 @@
   users.users.loris = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "libvirtd" ];
+    
+    # Point to the string path of the binary to bypass the validation check
+    shell = "${friendsShell}/bin/shell";
   };
+
+  # Register the string path as a valid system shell
+  environment.shells = [ "${friendsShell}/bin/shell" ];
 
   # Virtualization
   virtualisation.libvirtd.enable = true;
