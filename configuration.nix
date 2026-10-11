@@ -64,6 +64,22 @@
   # System Software & Unfree Packages
   nixpkgs.config.allowUnfree = true;
 
+  # Systemd service to run LiteLLM proxy listening on port 4000
+  systemd.services.litellm = {
+    description = "LiteLLM Proxy Server";
+    after = [ "network.target" "ollama.service" ];
+    wantedBy = [ "multi-user.target" ];
+    
+    # Environment variables if you add other keys later
+    # environment = { OPENAI_API_KEY = "sk-..."; };
+
+    serviceConfig = {
+      ExecStart = "${pkgs.litellm}/bin/litellm --model ollama/llama3.2:1b --port 4000";
+      Restart = "always";
+      User = "loris";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     gpu-screen-recorder-gtk
     losslesscut-bin
@@ -87,6 +103,11 @@
     grimblast
     wowup-cf
     nodejs_20
+    steamtinkerlaunch
+    python312
+    litellm
+    python3
+    python3Packages.pipx
   ];
 
   # Gaming & Performance
@@ -95,6 +116,9 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
+    extraCompatPackages = with pkgs; [
+      steamtinkerlaunch
+    ];
   };
   programs.gamemode.enable = true;
   networking.firewall.checkReversePath = false;
