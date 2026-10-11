@@ -1,0 +1,10 @@
+/home/loris/projects/shell/shell/target/debug/deps/toml_datetime-451011adbf1965c8.d: /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/lib.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/datetime.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/de.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/ser.rs
+
+/home/loris/projects/shell/shell/target/debug/deps/libtoml_datetime-451011adbf1965c8.rlib: /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/lib.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/datetime.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/de.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/ser.rs
+
+/home/loris/projects/shell/shell/target/debug/deps/libtoml_datetime-451011adbf1965c8.rmeta: /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/lib.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/datetime.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/de.rs /home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/ser.rs
+
+/home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/lib.rs:
+/home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/datetime.rs:
+/home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/de.rs:
+/home/loris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0/src/ser.rs:

@@ -49,11 +49,14 @@ impl ShellConfig {
         Ok(contents)
     }
     pub fn config_path() -> std::path::PathBuf {
-        let appdata = std::env::var("APPDATA").expect("%APPDATA% not set (this is Windows-only)");
+        let config_dir = std::env::var("XDG_CONFIG_HOME")
+            .map(PathBuf::from)
+            .unwrap_or_else(|_| {
+                let home = std::env::var("HOME").expect("HOME directory not set");
+                PathBuf::from(home).join(".config")
+            });
 
-        std::path::PathBuf::from(appdata)
-            .join("LeVimShell")
-            .join("shell.toml")
+        config_dir.join("LeVimShell").join("shell.toml")
     }
 }
 
